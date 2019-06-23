@@ -1,0 +1,6 @@
+-r requirements_basic.txt
+pytest
+pytest-cov
+pylint
+pycodestyle
+PyYAML
