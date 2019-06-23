@@ -25,6 +25,7 @@ create_env dev_env requirements_dev.txt
 
 popd
 
+echo "${current_dir}/python_envs" > python_envs/root_path
 # Create a tar file to pass between the autograding phases
 # https://submitty.org/instructor/assignment_configuration#phases-of-autograding
 tar zcvf python_envs.tar.gz python_envs

@@ -27,3 +27,8 @@ That includes:
      - Packages the environments and the submission as `submission.tar.gz.out`.
        **NB** If the file is not called `*.out` then it's not moved to the
        execution phase.
+
+1. The `test_input` directory contains some examples of running some tests. All
+   of them need the `helpers_functions.sh` file. It includes some functions that
+   need to be repeated multiple times. For example, `setup_all` is needed for each
+   tests as each test is independent of each other.
