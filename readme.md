@@ -32,3 +32,9 @@ That includes:
    of them need the `helpers_functions.sh` file. It includes some functions that
    need to be repeated multiple times. For example, `setup_all` is needed for each
    tests as each test is independent of each other.
+
+   Each file on this directory runs the "tests" for the question as numbered in
+   the assignment instructions.
+   - `01_01_install.sh` checks that it's installable (on the basic environment)
+   - ...
+   - `09_01_pep8.sh` runs linter (using the dev environment).
