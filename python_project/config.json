@@ -1,0 +1,177 @@
+{
+    // Title: Greetings library
+    // URL:
+    // ID:
+    // path:
+    // Max size of uploads: 10MB  - Students may upload artefacts together with the repository.
+    "max_submission_size" : 10000000,
+
+    "resource_limits" : {
+        // Allow the submission to run for <RLIMIT_CPU> seconds.
+        "RLIMIT_CPU" : 60,
+        // Allow up to 20 additional processes launched by the student code.
+        "RLIMIT_NPROC" : 20,
+        // Allow for lots of files created (env only 1400!)
+        "RLIMIT_LOCKS": 5000,
+        // Maximum file sizes created (1GB)
+        "RLIMIT_FSIZE": 1000000000
+    },
+    // Allow the student code to use IPC and multiprocessing system calls.
+    "allow_system_calls" : [
+        // This allows us to use ipc, pipe, semop, shmat, shmtcl, ...
+        "ALLOW_SYSTEM_CALL_CATEGORY_COMMUNICATIONS_AND_NETWORKING_INTERPROCESS_COMMUNICATION",
+        // This allows us to use clone, execve, fork, set_tid_address, vfork
+        "ALLOW_SYSTEM_CALL_CATEGORY_PROCESS_CONTROL_NEW_PROCESS_THREAD"
+    ],
+
+    "grading_parameters" : {
+        "TOTAL_POINTS" : 29,
+        "AUTO_POINTS" : 14,
+        "TA_POINTS" : 15,
+        "EXTRA_CREDIT_POINTS" : 0
+    },
+
+    "autograding" : {
+        "submission_to_compilation" : [ "*.tar.gz" ],
+        "compilation_to_runner" : [ "submission.tar.gz.out" ],
+        "work_to_details" : [ "*.pdf" ]
+    },
+
+
+    "testcases" : [
+        // Uncompress and delete unneeded directories # TEST01
+        {
+            "type": "Compilation",
+            "title": "Uncompress, cleaning and setup",
+            "command": "bash prepare_folder.sh",
+            "executable_name": "submission.tar.gz.out",
+            "points": 0
+        },
+
+
+        // 1. installable
+        {
+            "type": "Execution",
+            "title" : "Instalable?",
+            "command" : "bash 01_01_install.sh",
+            "filename": ["INSTALLED"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "INSTALLED"
+                }
+            ]
+        },
+        // 2. it is importable
+        {
+            "type": "Execution",
+            "title" : "It can be imported",
+            "command" : "bash 02_01_works.sh",
+            "filename": ["WORKS"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfNotEmpty",
+                    "actual_file" : "WORKS"
+                }
+            ]
+        },
+        // 5. greet parameters TODO: comparing expected output?
+        {
+            "type": "Execution",
+            "title" : "greet command",
+            "command" : "bash 05_01_run_greet.sh",
+            "filename": ["EXISTS"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "EXISTS"
+                }
+            ]
+        },
+        // 6. Unit tests - run all
+        {
+            "type": "Execution",
+            "title" : "unit tests",
+            "command" : "bash 06_01_runtests.sh",
+            "filename": ["TESTOUTPUT", "ALLTESTS.py", "ALLFixtures.yaml"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "TESTOUTPUT"
+                },
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "ALLTESTS.py"
+                },
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "ALLFixtures.yaml"
+                }
+            ]
+        },
+        // 7. the three files                                 # TEST14
+        // Marks: 1 + 2
+        {
+            "type": "Execution",
+            "title" : "three files",
+            "command" : "bash 07_01_3files.sh",
+            "filename": ["GOODFILES", "ThreeFILES"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfNotEmpty",
+                    "actual_file" : "GOODFILES"
+                },
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "ThreeFILES"
+                }
+            ]
+        },
+        // 8. git commits
+        {
+            "type": "Execution",
+            "title" : "Git repository",
+            "command" : "bash 08_01_git_check.sh",
+            "filename": ["GITCHECKED", "GITHISTORY"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfNotEmpty",
+                    "actual_file" : "GITCHECKED"
+                },
+                {
+                    "method" : "errorIfEmpty",
+                    "actual_file" : "GITHISTORY"
+                }
+            ]
+        },
+
+        // 9. PEP8
+        {
+            "type": "Execution",
+            "title" : "pep8",
+            "command" : "bash 01_02_pep8.sh",
+            "filename": ["PEP8"],
+            "points" : 1,
+            "validation" : [
+                {
+                    "method" : "errorIfNotEmpty",
+                    "actual_file" : "PEP8"
+                }
+            ]
+        },
+        // Change default submission limit
+        {
+            "title": "Submission Limit",
+            "type": "FileCheck",
+            "max_submissions": 500,
+            "penalty": -0.1,
+            "points": -5
+        }
+    ]
+}
