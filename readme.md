@@ -11,7 +11,7 @@ That includes:
  - Runs other tests;
  - ...
 
-## How it is done within Submitty?
+## How it is done within Submitty? (`config/`)
 
 1. On the `provided_code` directory there is:
 
@@ -44,7 +44,7 @@ That includes:
 After creating a course (`ccmcr19`):
 ```bash
 # bash ~/create_course.sh # After modify coursename, and other fields.
-# mkdir -p /var/local/submitty/private_course_repositories/submitty_courses/ccmcr19
+# mkdir -p /var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01
 ```
 go to the web and select course, click on new gradeable, fill the main information. Then you can either 
 upload the exercise, either via the web or using scp:
@@ -53,7 +53,7 @@ upload the exercise, either via the web or using scp:
 
 - **ssh**: On the host,
   ```bash
-  scp -i .vagrant/machines/ubuntu-18.04/virtualbox/private_key -r python_project root@192.168.56.111:/var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01
+  scp -i .vagrant/machines/ubuntu-18.04/virtualbox/private_key -r config/* root@192.168.56.111:/var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01
   ```
   and on the vm:
   ```bash
@@ -64,12 +64,12 @@ upload the exercise, either via the web or using scp:
 and then finally on the web:
 
 - Create a new gradable (with manual marking too)
-- Submission/Autograding: Full path - `/var/local/submitty/private_course_repositories/submitty_courses/ccmcr19`; no dates limits
+- Submission/Autograding: Full path - `/var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01`; no dates limits
 - Back to the terminal but this time as instructor:
 ```bash
 # su - instructor
 instructor $ # Run the needed script to generate the environments
-instructor $ cd /var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/provided_code
+instructor $ cd /var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01/provided_code
 instructor $ bash create_env.sh
 instructor $ # Build the assignment
 instructor $ cd ~/ccmcr19
@@ -118,7 +118,7 @@ Then it needs to be compiled again:
 ```bash
 sudo /usr/local/submitty/.setup/INSTALL_SUBMITTY.sh restart_web
 ```
-## Sample submissions
+## Sample submissions (`submissions/`)
 
 - `10001000.tar.gz` - All good, no git.
 - `10001001.tar.gz` - Tests fail, one pep8 warning.
