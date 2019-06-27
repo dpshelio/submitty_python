@@ -5,4 +5,4 @@
 setup_all || exit 1
 
 # Install the library
-install || exit 1
+install greet || exit 1

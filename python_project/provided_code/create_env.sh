@@ -13,7 +13,8 @@ pushd python_envs
 
 function create_env() {
     python3 -m venv $1
-    source student_env/bin/activate
+    source $1/bin/activate
+    pip install --upgrade pip
     pip install -q -r ${current_dir}/$2
     deactivate
 }

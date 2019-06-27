@@ -4,10 +4,10 @@
 
 setup_all || exit 1
 
-echo "Checking pep8 output from greet.py"
-lab=( $(find assignment/submission -type f -name 'greet.py') )
+echo "Checking pep8 output from greeter.py"
+lab=( $(find assignment/submission -type f -name 'greeter.py') )
 if [[ ${#lab[@]} != 1 ]]; then
-    echo "File greet.py not found or more than one greet.py files in your submission."
+    echo "File greeter.py not found or more than one greeter.py files in your submission."
     echo " are you submitting some extra folders like dist, build, ...? Please, remove them before submission."
     exit 1
 fi

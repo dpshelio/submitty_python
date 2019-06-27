@@ -8,10 +8,10 @@ source assignment/python_envs/dev_env/bin/activate
 
 pushd assignment/submission
 
-python -c 'from greetings.greet import greet' > ${base}/WORKS 2>&1
+python -c 'from greetings.greeter import greet' > ${base}/WORKS 2>&1
 
 popd
 if [ -s WORKS ]; then
-    echo "NOTE: all marks would be invalid if `greet` cannot be imported."
+    echo "NOTE: all marks would be invalid if 'greet' cannot be imported."
 
 fi
