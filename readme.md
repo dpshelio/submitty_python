@@ -79,7 +79,7 @@ If it fails, read the [[NOTE]] below.
 
 
 
-## NOTE about this process
+### NOTE about this process
 
 The approach here removes one of the security fences Submitty has, which is to
 not allow running bash programs. To dissable it you need to do it on:
@@ -118,3 +118,8 @@ Then it needs to be compiled again:
 ```bash
 sudo /usr/local/submitty/.setup/INSTALL_SUBMITTY.sh restart_web
 ```
+## Sample submissions
+
+- `10001000.tar.gz` - All good, no git.
+- `10001001.tar.gz` - Tests fail, one pep8 warning.
+- `10001002.tar.gz` - All good, all clean (no artefacts).
