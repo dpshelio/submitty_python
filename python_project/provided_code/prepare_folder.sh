@@ -92,3 +92,5 @@ popd
 
 # We create a submission.zip.out file as other things are not transferred by Submitty!
 tar zcf submission.tar.gz.out assignment
+
+if [[ ${debug} == 1 ]]; then ls -lhtra; fi
