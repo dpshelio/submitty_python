@@ -25,9 +25,9 @@
     ],
 
     "grading_parameters" : {
-        "TOTAL_POINTS" : 29,
-        "AUTO_POINTS" : 14,
-        "TA_POINTS" : 15,
+        "TOTAL_POINTS" : 9,
+        "AUTO_POINTS" : 7,
+        "TA_POINTS" : 2,
         "EXTRA_CREDIT_POINTS" : 0
     },
 
@@ -155,7 +155,7 @@
         {
             "type": "Execution",
             "title" : "pep8",
-            "command" : "bash 01_02_pep8.sh",
+            "command" : "bash 09_01_pep8.sh",
             "filename": ["PEP8"],
             "points" : 1,
             "validation" : [
