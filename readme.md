@@ -11,6 +11,8 @@ That includes:
  - Runs other tests;
  - ...
 
+The [assignment](./assignment.md) shows how that would be asked.
+
 ## How it is done within Submitty? (`config/`)
 
 1. On the `provided_code` directory there is:
