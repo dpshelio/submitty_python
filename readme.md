@@ -69,9 +69,12 @@ and then finally on the web:
 - Submission/Autograding: Full path - `/var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01`; no dates limits
 - Back to the terminal but this time as instructor:
 ```bash
+# sudo apt-get install -y python3-venv
 # su - instructor
 instructor $ # Run the needed script to generate the environments
 instructor $ cd /var/local/submitty/private_course_repositories/submitty_courses/ccmcr19/hw01/provided_code
+instructor $ # If the config has been uploaded via the website, then the owner won't be instructor, and the following needs to run
+instructor $ [[ $(stat -c %U create_env.sh) != "instructor" ]] && chown -R instructor .
 instructor $ bash create_env.sh
 instructor $ # Build the assignment
 instructor $ cd ~/ccmcr19
