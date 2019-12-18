@@ -50,7 +50,7 @@ sudo /usr/local/submitty/sbin/create_course.sh ${semester} ${course} ${instructo
 echo "Course has to be created at: /var/local/submitty/courses/${semester}/${course}/"
 
 sudo service php7.2-fpm restart
-sudo /usr/local/submitty/sbin/adduser.py --course ${semester} ${course} null ${instructor}
+sudo /usr/local/submitty/sbin/adduser_course.py  ${instructor} ${semester} ${course} null
 
 sudo su postgres -c \
      "psql -d submitty -c \"insert into courses_registration_sections values('${semester}', '${course}', '${section}');\""
